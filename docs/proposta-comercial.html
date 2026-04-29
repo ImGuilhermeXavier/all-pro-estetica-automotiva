@@ -1,0 +1,875 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Proposta Comercial — ALL PRO Estetica Automotiva</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0b0d10;
+    --bg-soft: #11151a;
+    --surface: #161b22;
+    --surface-2: #1c2129;
+    --line: #232a33;
+    --text: #e7ecf3;
+    --text-dim: #9aa4b2;
+    --text-muted: #6b7480;
+    --accent: #d4af37;          /* dourado premium */
+    --accent-soft: #b8932c;
+    --accent-bg: rgba(212,175,55,0.10);
+    --success: #4ade80;
+    --danger: #ef4444;
+    --radius: 14px;
+    --radius-sm: 8px;
+    --shadow: 0 10px 40px rgba(0,0,0,0.35);
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.65;
+    font-size: 15px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 56px 56px 80px;
+  }
+
+  /* Header */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding-bottom: 28px;
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 40px;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .brand-mark {
+    width: 46px;
+    height: 46px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent-soft) 100%);
+    color: #0b0d10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 800;
+    font-size: 20px;
+    letter-spacing: -0.5px;
+  }
+  .brand-name {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    letter-spacing: -0.3px;
+  }
+  .brand-tag {
+    color: var(--text-muted);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-top: 2px;
+  }
+  .header-meta {
+    text-align: right;
+    font-size: 13px;
+    color: var(--text-dim);
+  }
+  .header-meta strong {
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  /* Hero */
+  .hero {
+    background: radial-gradient(circle at 20% 0%, rgba(212,175,55,0.12), transparent 50%), var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 36px 36px 32px;
+    margin-bottom: 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    right: -60px; bottom: -60px;
+    width: 200px; height: 200px;
+    background: radial-gradient(circle, rgba(212,175,55,0.18), transparent 70%);
+    border-radius: 50%;
+  }
+  .hero-eyebrow {
+    color: var(--accent);
+    font-size: 12px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  .hero h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 32px;
+    line-height: 1.15;
+    margin: 0 0 14px;
+    letter-spacing: -0.8px;
+    font-weight: 700;
+  }
+  .hero p.lead {
+    color: var(--text-dim);
+    font-size: 15px;
+    margin: 0;
+    max-width: 640px;
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 28px;
+    position: relative;
+    z-index: 1;
+  }
+  .hero-grid .item {
+    background: rgba(255,255,255,0.025);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    padding: 14px 16px;
+  }
+  .hero-grid .item .label {
+    color: var(--text-muted);
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .hero-grid .item .value {
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  /* Sections */
+  section {
+    margin-bottom: 44px;
+  }
+  .section-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px; height: 28px;
+    border-radius: 8px;
+    background: var(--accent-bg);
+    color: var(--accent);
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    margin-right: 12px;
+    border: 1px solid rgba(212,175,55,0.25);
+  }
+  h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 22px;
+    margin: 0 0 18px;
+    letter-spacing: -0.4px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+  }
+  h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 16px;
+    margin: 24px 0 10px;
+    color: var(--text);
+    font-weight: 600;
+    letter-spacing: -0.2px;
+  }
+  p { margin: 0 0 14px; color: var(--text-dim); }
+  p strong, li strong { color: var(--text); font-weight: 600; }
+
+  /* Cards */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 24px 26px;
+  }
+  .card + .card { margin-top: 14px; }
+
+  /* Lists */
+  ul.clean {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  ul.clean li {
+    padding: 12px 0 12px 30px;
+    border-bottom: 1px solid var(--line);
+    position: relative;
+    color: var(--text-dim);
+  }
+  ul.clean li:last-child { border-bottom: 0; }
+  ul.clean li::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 18px;
+    width: 16px; height: 16px;
+    border-radius: 50%;
+    background: var(--accent-bg);
+    border: 1px solid var(--accent);
+  }
+  ul.clean li::after {
+    content: '';
+    position: absolute;
+    left: 5px; top: 22px;
+    width: 5px; height: 8px;
+    border-right: 2px solid var(--accent);
+    border-bottom: 2px solid var(--accent);
+    transform: rotate(45deg);
+  }
+  ul.clean.danger li::before { background: rgba(239,68,68,0.10); border-color: var(--danger); }
+  ul.clean.danger li::after {
+    width: 8px; height: 8px;
+    border: 0;
+    background: transparent;
+    left: 4px; top: 21px;
+    transform: rotate(45deg);
+    box-shadow: inset 0 0 0 2px var(--danger);
+    border-radius: 0;
+  }
+  ul.clean.danger li::after {
+    content: '\00d7';
+    width: auto; height: auto;
+    background: transparent;
+    border: 0;
+    color: var(--danger);
+    font-size: 14px;
+    font-weight: 700;
+    left: 4px; top: 11px;
+    transform: none;
+  }
+
+  ul.feature-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px 22px;
+  }
+  ul.feature-list li {
+    padding: 8px 0 8px 22px;
+    position: relative;
+    color: var(--text-dim);
+    font-size: 14px;
+  }
+  ul.feature-list li::before {
+    content: '\2192';
+    position: absolute;
+    left: 0; top: 7px;
+    color: var(--accent);
+    font-weight: 700;
+  }
+
+  /* Pricing / value box */
+  .value-anchor {
+    background: linear-gradient(180deg, rgba(212,175,55,0.08), rgba(212,175,55,0.02));
+    border: 1px solid rgba(212,175,55,0.30);
+    border-radius: var(--radius);
+    padding: 26px 28px;
+    margin: 18px 0 6px;
+  }
+  .value-anchor .vsmall {
+    color: var(--accent);
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  .value-rows {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .value-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px dashed rgba(255,255,255,0.06);
+  }
+  .value-row:last-child { border-bottom: 0; padding-bottom: 0; }
+  .value-row .item-name { color: var(--text); font-weight: 500; }
+  .value-row .item-price { color: var(--text-dim); font-family: 'Space Grotesk', sans-serif; font-weight: 600; }
+  .value-row.total {
+    margin-top: 8px;
+    padding-top: 16px;
+    border-top: 1px solid var(--accent);
+    border-bottom: 0;
+  }
+  .value-row.total .item-name {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text);
+  }
+  .value-row.total .item-price {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--accent);
+  }
+
+  /* Trade box */
+  .trade-grid {
+    display: grid;
+    grid-template-columns: 1fr 60px 1fr;
+    gap: 14px;
+    align-items: stretch;
+    margin: 18px 0;
+  }
+  .trade-col {
+    background: var(--surface-2);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    padding: 18px 20px;
+  }
+  .trade-col h4 {
+    margin: 0 0 12px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--accent);
+    font-weight: 600;
+  }
+  .trade-col ul {
+    margin: 0; padding: 0; list-style: none;
+  }
+  .trade-col li {
+    padding: 8px 0 8px 22px;
+    position: relative;
+    font-size: 14px;
+    color: var(--text);
+  }
+  .trade-col li::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 14px;
+    width: 12px; height: 2px;
+    background: var(--accent);
+  }
+  .trade-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent);
+    font-size: 30px;
+    font-weight: 300;
+  }
+
+  /* Highlight callout */
+  .callout {
+    background: var(--surface-2);
+    border-left: 3px solid var(--accent);
+    border-radius: var(--radius-sm);
+    padding: 16px 20px;
+    margin: 16px 0;
+    font-size: 14px;
+    color: var(--text-dim);
+  }
+  .callout strong { color: var(--text); }
+
+  /* Timeline */
+  .timeline {
+    position: relative;
+    padding-left: 30px;
+    margin: 12px 0;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 9px; top: 8px; bottom: 8px;
+    width: 2px;
+    background: linear-gradient(180deg, var(--accent), var(--line) 90%);
+  }
+  .timeline .step {
+    position: relative;
+    padding: 8px 0 18px;
+  }
+  .timeline .step::before {
+    content: '';
+    position: absolute;
+    left: -27px; top: 14px;
+    width: 14px; height: 14px;
+    border-radius: 50%;
+    background: var(--accent);
+    border: 3px solid var(--bg);
+    box-shadow: 0 0 0 2px var(--accent);
+  }
+  .timeline .step-day {
+    color: var(--accent);
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: 600;
+  }
+  .timeline .step-title {
+    color: var(--text);
+    font-weight: 600;
+    margin: 2px 0 4px;
+    font-size: 15px;
+  }
+  .timeline .step-desc {
+    color: var(--text-dim);
+    font-size: 14px;
+  }
+
+  /* Renewal table */
+  .renewal {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 22px 26px;
+  }
+  .renewal-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 14px;
+  }
+  .renewal-head .price {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 28px;
+    color: var(--accent);
+    font-weight: 700;
+  }
+  .renewal-head .period {
+    color: var(--text-muted);
+    font-size: 13px;
+    margin-left: 6px;
+  }
+
+  /* Signature */
+  .sign-block {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-top: 30px;
+  }
+  .sign-line {
+    border-top: 1px solid var(--text-muted);
+    padding-top: 10px;
+    color: var(--text-dim);
+    font-size: 13px;
+    line-height: 1.5;
+  }
+  .sign-line strong { color: var(--text); display: block; font-size: 14px; margin-bottom: 2px; }
+
+  /* Footer */
+  footer.proposal-footer {
+    margin-top: 60px;
+    padding-top: 24px;
+    border-top: 1px solid var(--line);
+    color: var(--text-muted);
+    font-size: 12px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  /* Print */
+  @media print {
+    body { background: #fff; color: #111; }
+    .page { padding: 24px; max-width: none; }
+    section, .hero, .card, .renewal, .value-anchor, .callout {
+      box-shadow: none;
+      page-break-inside: avoid;
+    }
+    .hero { background: #f8f4e6; border-color: #d4af37; }
+    a { color: inherit; }
+  }
+
+  @media (max-width: 720px) {
+    .page { padding: 28px 22px 60px; }
+    .hero { padding: 24px; }
+    .hero h1 { font-size: 24px; }
+    .header { flex-direction: column; gap: 16px; }
+    .header-meta { text-align: left; }
+    .hero-grid { grid-template-columns: 1fr; }
+    .trade-grid { grid-template-columns: 1fr; }
+    .trade-arrow { transform: rotate(90deg); }
+    ul.feature-list { grid-template-columns: 1fr; }
+    .sign-block { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<main class="page">
+
+  <!-- Header -->
+  <header class="header">
+    <div class="brand">
+      <div class="brand-mark">eS</div>
+      <div>
+        <div class="brand-name">eSapiens Studio Digital</div>
+        <div class="brand-tag">Web . Branding . Performance</div>
+      </div>
+    </div>
+    <div class="header-meta">
+      <div><strong>Proposta Comercial</strong></div>
+      <div>N&deg; 2026-04-29-ALLPRO</div>
+      <div>Emiss&atilde;o: 29 de abril de 2026</div>
+      <div>V&aacute;lida at&eacute;: 14 de maio de 2026</div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-eyebrow">Para Daniel . ALL PRO Est&eacute;tica Automotiva</div>
+    <h1>Site institucional premium<br>para a ALL PRO em Campinas</h1>
+    <p class="lead">
+      Uma landing page institucional moderna, r&aacute;pida e otimizada para SEO local, pensada para transformar buscas no Google em or&ccedil;amentos reais para a ALL PRO. Esta proposta apresenta o escopo entregue, o modelo de remunera&ccedil;&atilde;o por permuta e as condi&ccedil;&otilde;es de continuidade.
+    </p>
+
+    <div class="hero-grid">
+      <div class="item">
+        <div class="label">Cliente</div>
+        <div class="value">ALL PRO Est&eacute;tica Automotiva</div>
+      </div>
+      <div class="item">
+        <div class="label">Contato</div>
+        <div class="value">Daniel &mdash; Propriet&aacute;rio</div>
+      </div>
+      <div class="item">
+        <div class="label">Pra&ccedil;a</div>
+        <div class="value">Campinas / SP</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 1. Resumo Executivo -->
+  <section>
+    <h2><span class="section-num">01</span>Resumo executivo</h2>
+    <div class="card">
+      <p>
+        Desenvolvemos uma <strong>landing page institucional premium</strong> para a ALL PRO Est&eacute;tica Automotiva, com design dark sofisticado, performance Lighthouse mobile <strong>&ge; 95</strong>, SEO local otimizado para Campinas e estrutura t&eacute;cnica moderna (Astro 5 + TailwindCSS 4, output 100% est&aacute;tico). O site est&aacute; pronto para ir ao ar e foi constru&iacute;do para gerar autoridade digital, ranquear em buscas regionais e converter visitantes em clientes qualificados. A remunera&ccedil;&atilde;o do primeiro ano ser&aacute; feita por <strong>permuta de servi&ccedil;os automotivos</strong>, sem desembolso financeiro pela ALL PRO.
+      </p>
+    </div>
+  </section>
+
+  <!-- 2. Escopo -->
+  <section>
+    <h2><span class="section-num">02</span>Escopo da entrega</h2>
+
+    <div class="card">
+      <h3 style="margin-top:0">Site institucional completo</h3>
+      <ul class="feature-list">
+        <li>Landing page institucional one-page</li>
+        <li>Design dark premium e exclusivo</li>
+        <li>Layout 100% responsivo (mobile, tablet, desktop)</li>
+        <li>Hero com chamada para a&ccedil;&atilde;o destacada</li>
+        <li>Galeria antes/depois (estrutura pronta)</li>
+        <li>Se&ccedil;&atilde;o de servi&ccedil;os e diferenciais</li>
+        <li>Bloco de localiza&ccedil;&atilde;o e contato</li>
+        <li>Integra&ccedil;&atilde;o direta com WhatsApp</li>
+        <li>FAQ estruturado (com Schema.org)</li>
+        <li>Build est&aacute;tico com tempo de carregamento &lt; 1s</li>
+      </ul>
+
+      <h3>SEO e descoberta no Google</h3>
+      <ul class="feature-list">
+        <li>Schema.org AutomotiveBusiness JSON-LD</li>
+        <li>FAQ JSON-LD para rich snippets</li>
+        <li>Sitemap.xml gerado automaticamente</li>
+        <li>Open Graph + Twitter Card configurados</li>
+        <li>Geo tags para Campinas e regi&atilde;o</li>
+        <li>Palavras-chave locais otimizadas</li>
+        <li>Lighthouse SEO 100 / Performance &ge; 95</li>
+        <li>Robots.txt e canonical tags corretos</li>
+      </ul>
+
+      <h3>Infraestrutura e dom&iacute;nio</h3>
+      <ul class="clean">
+        <li><strong>Dom&iacute;nio pr&oacute;prio</strong> registrado em nome da ALL PRO (sugest&atilde;o: allproesteticaautomotiva.com.br &mdash; a confirmar disponibilidade). Custo do primeiro ano de registro inclu&iacute;do na proposta.</li>
+        <li><strong>Hospedagem na Vercel</strong> (plano gratuito, mais que suficiente para o volume do neg&oacute;cio) &mdash; sem custo adicional, com CDN global e HTTPS autom&aacute;tico.</li>
+        <li><strong>E-mail t&eacute;cnico</strong> de suporte e canal dedicado para acompanhar publica&ccedil;&atilde;o, ajustes e renova&ccedil;&otilde;es.</li>
+      </ul>
+
+      <h3>Suporte ap&oacute;s a publica&ccedil;&atilde;o</h3>
+      <ul class="clean">
+        <li><strong>At&eacute; 3 rodadas de ajustes</strong> de conte&uacute;do e design ap&oacute;s a entrega inicial, sem custo adicional.</li>
+        <li><strong>Inser&ccedil;&atilde;o das fotos definitivas</strong> nos espa&ccedil;os reservados (galeria antes/depois, hero, localiza&ccedil;&atilde;o) assim que a ALL PRO enviar o material &mdash; sem custo dentro do prazo do contrato.</li>
+        <li><strong>Suporte t&eacute;cnico</strong> para qualquer instabilidade durante todo o per&iacute;odo do contrato.</li>
+      </ul>
+
+      <h3>Pontos extras opcionais (cortesia)</h3>
+      <ul class="clean">
+        <li>Configura&ccedil;&atilde;o e otimiza&ccedil;&atilde;o do <strong>Google Business Profile (GBP)</strong> da ALL PRO, com fichas de servi&ccedil;os, hor&aacute;rios e fotos.</li>
+        <li>Integra&ccedil;&atilde;o com <strong>Google Search Console</strong> e submiss&atilde;o do sitemap para indexa&ccedil;&atilde;o priorit&aacute;ria.</li>
+        <li>Orienta&ccedil;&otilde;es pr&aacute;ticas de conte&uacute;do (fotos, textos, avalia&ccedil;&otilde;es) para acelerar o ranqueamento org&acirc;nico em Campinas.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 3. NÃO incluído -->
+  <section>
+    <h2><span class="section-num">03</span>O que n&atilde;o est&aacute; inclu&iacute;do</h2>
+    <p>Para evitar mal-entendidos, listamos abaixo os itens que <strong>n&atilde;o fazem parte</strong> desta proposta e dependem do cliente ou de servi&ccedil;os contratados &agrave; parte:</p>
+    <div class="card">
+      <ul class="clean danger">
+        <li><strong>Fotos profissionais</strong> dos trabalhos da ALL PRO (galeria antes/depois, hero, fachada, localiza&ccedil;&atilde;o). O site tem espa&ccedil;o reservado e otimizado para receber as imagens; o envio do material &eacute; responsabilidade da ALL PRO.</li>
+        <li><strong>Gest&atilde;o de redes sociais</strong> (Instagram, Facebook, TikTok). Esta proposta cobre apenas o site institucional.</li>
+        <li><strong>Cria&ccedil;&atilde;o ou regulariza&ccedil;&atilde;o de CNPJ</strong>, alvar&aacute;s ou documenta&ccedil;&atilde;o fiscal &mdash; permanece sob responsabilidade da ALL PRO.</li>
+        <li><strong>Tr&aacute;fego pago</strong> (Google Ads, Meta Ads). Pode ser contratado &agrave; parte em proposta espec&iacute;fica.</li>
+        <li><strong>Produ&ccedil;&atilde;o de copy publicit&aacute;rio extenso</strong> ou v&iacute;deos. O texto institucional do site est&aacute; inclu&iacute;do; campanhas s&atilde;o escopo separado.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 4. Modelo de troca / valor de mercado -->
+  <section>
+    <h2><span class="section-num">04</span>Investimento e modelo de permuta</h2>
+
+    <p>
+      Antes de apresentar o modelo de troca, &eacute; importante deixar claro o <strong>valor de mercado</strong> deste projeto. O que a ALL PRO est&aacute; recebendo equivale, em pre&ccedil;o de balc&atilde;o, ao seguinte:
+    </p>
+
+    <div class="value-anchor">
+      <div class="vsmall">Valor de mercado equivalente (refer&ecirc;ncia)</div>
+      <p style="margin:0; color:var(--text-dim); font-size:14px;">
+        Pre&ccedil;os de mercado praticados em 2026 para projetos equivalentes em ag&ecirc;ncias e estudios de Campinas, S&atilde;o Paulo e regi&atilde;o:
+      </p>
+
+      <div class="value-rows">
+        <div class="value-row">
+          <span class="item-name">Landing page premium com design exclusivo</span>
+          <span class="item-price">R$ 4.500 &ndash; R$ 8.000</span>
+        </div>
+        <div class="value-row">
+          <span class="item-name">SEO t&eacute;cnico avan&ccedil;ado + Schema.org</span>
+          <span class="item-price">R$ 800 &ndash; R$ 1.800</span>
+        </div>
+        <div class="value-row">
+          <span class="item-name">Configura&ccedil;&atilde;o GBP + Search Console</span>
+          <span class="item-price">R$ 400 &ndash; R$ 900</span>
+        </div>
+        <div class="value-row">
+          <span class="item-name">Dom&iacute;nio + hospedagem 12 meses</span>
+          <span class="item-price">R$ 360 &ndash; R$ 720</span>
+        </div>
+        <div class="value-row">
+          <span class="item-name">Suporte e ajustes durante 12 meses</span>
+          <span class="item-price">R$ 2.400 &ndash; R$ 4.800</span>
+        </div>
+
+        <div class="value-row total">
+          <span class="item-name">Total de mercado equivalente</span>
+          <span class="item-price">R$ 8.460 &ndash; R$ 16.220</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <strong>Para a ALL PRO, o investimento financeiro no primeiro ano &eacute; zero.</strong> O modelo proposto &eacute; uma <strong>permuta direta de servi&ccedil;os</strong> &mdash; uma troca justa entre dois neg&oacute;cios premium que se valorizam mutuamente.
+    </div>
+
+    <h3>A troca proposta (Ano 1)</h3>
+
+    <div class="trade-grid">
+      <div class="trade-col">
+        <h4>ALL PRO entrega</h4>
+        <ul>
+          <li>1x <strong>Insulfilm Nano Cer&acirc;mica</strong> (1 ve&iacute;culo &mdash; modelo a combinar)</li>
+          <li>1x <strong>Cristaliza&ccedil;&atilde;o de pintura</strong> (1 ve&iacute;culo &mdash; modelo a combinar)</li>
+        </ul>
+      </div>
+      <div class="trade-arrow">&harr;</div>
+      <div class="trade-col">
+        <h4>eSapiens entrega</h4>
+        <ul>
+          <li>Site completo no ar (escopo inteiro acima)</li>
+          <li>Dom&iacute;nio pr&oacute;prio + hospedagem por 12 meses</li>
+          <li>At&eacute; 3 rodadas de ajustes ap&oacute;s a entrega</li>
+          <li>Inser&ccedil;&atilde;o das fotos finais quando enviadas</li>
+          <li>Configura&ccedil;&atilde;o GBP, Search Console, sitemap</li>
+          <li>Suporte t&eacute;cnico durante todo o ano</li>
+        </ul>
+      </div>
+    </div>
+
+    <p style="margin-top:18px; font-size:14px;">
+      A data e o ve&iacute;culo de cada servi&ccedil;o automotivo ser&atilde;o combinados em comum acordo, respeitando a agenda da ALL PRO. Os servi&ccedil;os devem ser executados <strong>at&eacute; o final do per&iacute;odo do contrato (12 meses)</strong>.
+    </p>
+  </section>
+
+  <!-- 5. Renovação Ano 2 -->
+  <section>
+    <h2><span class="section-num">05</span>Continuidade ap&oacute;s o 1&ordm; ano</h2>
+
+    <p>
+      Ao final do per&iacute;odo de 12 meses, a ALL PRO ter&aacute; duas op&ccedil;&otilde;es claras &mdash; sem letras mi&uacute;das, sem renova&ccedil;&atilde;o autom&aacute;tica indesejada:
+    </p>
+
+    <div class="renewal">
+      <div class="renewal-head">
+        <div>
+          <h3 style="margin:0; font-size:18px;">Op&ccedil;&atilde;o A &mdash; Manuten&ccedil;&atilde;o cont&iacute;nua</h3>
+          <p style="margin:4px 0 0; font-size:13px;">Para manter o site no ar, atualizado e com suporte ativo.</p>
+        </div>
+        <div>
+          <span class="price">R$ 200</span><span class="period">/m&ecirc;s</span>
+        </div>
+      </div>
+      <ul class="clean" style="margin:0;">
+        <li>Hospedagem na Vercel mantida (com CDN e HTTPS)</li>
+        <li>Renova&ccedil;&atilde;o anual do dom&iacute;nio inclu&iacute;da</li>
+        <li>Suporte t&eacute;cnico para incidentes e instabilidades</li>
+        <li>At&eacute; <strong>1 hora de ajustes mensais</strong> (textos, imagens, pequenos blocos)</li>
+        <li>Monitoramento de SEO e indexa&ccedil;&atilde;o no Google</li>
+      </ul>
+    </div>
+
+    <div class="renewal" style="margin-top:14px;">
+      <div class="renewal-head">
+        <div>
+          <h3 style="margin:0; font-size:18px;">Op&ccedil;&atilde;o B &mdash; N&atilde;o renovar</h3>
+          <p style="margin:4px 0 0; font-size:13px;">A ALL PRO &eacute; livre para encerrar e seguir por conta pr&oacute;pria.</p>
+        </div>
+        <div>
+          <span class="price" style="font-size:20px;">Sem multa</span>
+        </div>
+      </div>
+      <ul class="clean" style="margin:0;">
+        <li>A ALL PRO recebe o <strong>c&oacute;digo-fonte completo</strong> do site</li>
+        <li>Dom&iacute;nio permanece em nome da ALL PRO &mdash; pode ser apontado para qualquer hospedagem</li>
+        <li>Documenta&ccedil;&atilde;o b&aacute;sica para migra&ccedil;&atilde;o entregue junto</li>
+        <li>Sem multa, sem fideliza&ccedil;&atilde;o, sem letras mi&uacute;das</li>
+      </ul>
+    </div>
+
+    <div class="callout" style="margin-top:18px;">
+      A ALL PRO comunica a op&ccedil;&atilde;o escolhida at&eacute; <strong>30 dias antes</strong> do fim do contrato. Sem manifesta&ccedil;&atilde;o, o site continua no ar por mais 30 dias de cortesia para evitar interrup&ccedil;&atilde;o do servi&ccedil;o.
+    </div>
+  </section>
+
+  <!-- 6. Cronograma -->
+  <section>
+    <h2><span class="section-num">06</span>Cronograma de entrega</h2>
+
+    <p>O site j&aacute; est&aacute; praticamente pronto. O cronograma abaixo &eacute; uma estimativa realista contando a partir do <strong>aceite desta proposta</strong> e da defini&ccedil;&atilde;o do dom&iacute;nio:</p>
+
+    <div class="card">
+      <div class="timeline">
+        <div class="step">
+          <div class="step-day">Dia 1</div>
+          <div class="step-title">Aceite e alinhamento</div>
+          <div class="step-desc">Daniel confirma o dom&iacute;nio desejado e envia textos finais e fotos dispon&iacute;veis.</div>
+        </div>
+        <div class="step">
+          <div class="step-day">Dias 2-3</div>
+          <div class="step-title">Registro do dom&iacute;nio e ajustes</div>
+          <div class="step-desc">Compra do dom&iacute;nio, ajuste de textos, inser&ccedil;&atilde;o das fotos recebidas e revis&atilde;o final.</div>
+        </div>
+        <div class="step">
+          <div class="step-day">Dias 4-5</div>
+          <div class="step-title">Deploy e configura&ccedil;&otilde;es t&eacute;cnicas</div>
+          <div class="step-desc">Site no ar na Vercel, HTTPS ativo, Search Console configurado, sitemap submetido, GBP atualizado.</div>
+        </div>
+        <div class="step">
+          <div class="step-day">Dias 6-7</div>
+          <div class="step-title">Ajustes finais e valida&ccedil;&atilde;o</div>
+          <div class="step-desc">Primeira rodada de ajustes solicitados pelo cliente, valida&ccedil;&atilde;o em mobile/desktop e entrega oficial.</div>
+        </div>
+      </div>
+      <p style="margin-top:8px; font-size:13px; color:var(--text-muted);">
+        Estimativa: <strong>5 a 7 dias &uacute;teis</strong> at&eacute; o site no ar com dom&iacute;nio final. As demais 2 rodadas de ajustes ficam dispon&iacute;veis ao longo do contrato, conforme demanda.
+      </p>
+    </div>
+  </section>
+
+  <!-- 7. Próximos passos -->
+  <section>
+    <h2><span class="section-num">07</span>Pr&oacute;ximos passos</h2>
+    <p>Para iniciarmos j&aacute;, a ALL PRO precisa apenas:</p>
+    <div class="card">
+      <ul class="clean">
+        <li><strong>Confirmar o aceite desta proposta</strong> (assinatura no fim do documento ou confirma&ccedil;&atilde;o por escrito via WhatsApp).</li>
+        <li><strong>Confirmar o dom&iacute;nio desejado.</strong> Sugest&atilde;o: <code style="background:var(--surface-2);padding:2px 8px;border-radius:4px;color:var(--accent);">allproesteticaautomotiva.com.br</code> &mdash; verificamos disponibilidade junto. Outras op&ccedil;&otilde;es bem-vindas.</li>
+        <li><strong>Enviar fotos dispon&iacute;veis</strong> (galeria antes/depois, fachada, hero). Pode ser em lotes &mdash; come&ccedil;amos com o que houver e completamos depois.</li>
+        <li><strong>Combinar agendamento dos servi&ccedil;os de troca</strong> (insulfilm e cristaliza&ccedil;&atilde;o) &mdash; podem ser executados em datas distintas ao longo dos 12 meses.</li>
+        <li><strong>Indicar acessos</strong> de Google Business Profile (se j&aacute; existir) ou autorizar a cria&ccedil;&atilde;o de um novo.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 8. Termos -->
+  <section>
+    <h2><span class="section-num">08</span>Termos simples</h2>
+    <div class="card">
+      <ul class="clean">
+        <li><strong>Propriedade do c&oacute;digo:</strong> ao final dos 12 meses, a ALL PRO recebe o c&oacute;digo-fonte completo do site, mesmo se optar por n&atilde;o renovar.</li>
+        <li><strong>Dom&iacute;nio em nome da ALL PRO:</strong> registramos o dom&iacute;nio j&aacute; em nome da empresa &mdash; ele &eacute; da ALL PRO desde o dia 1.</li>
+        <li><strong>Pol&iacute;tica de n&atilde;o renova&ccedil;&atilde;o:</strong> sem multa, sem fideliza&ccedil;&atilde;o e sem renova&ccedil;&atilde;o autom&aacute;tica. A escolha &eacute; comunicada at&eacute; 30 dias antes do fim do contrato.</li>
+        <li><strong>Servi&ccedil;os de permuta:</strong> ambos os servi&ccedil;os (insulfilm e cristaliza&ccedil;&atilde;o) ser&atilde;o executados pela ALL PRO em ve&iacute;culos a combinar, dentro do prazo de 12 meses, em data acordada.</li>
+        <li><strong>Uso como portf&oacute;lio:</strong> a eSapiens fica autorizada a apresentar o projeto no portf&oacute;lio e em redes sociais como case de cliente, citando a ALL PRO.</li>
+        <li><strong>Confidencialidade:</strong> dados de neg&oacute;cio compartilhados durante o desenvolvimento s&atilde;o tratados como confidenciais.</li>
+        <li><strong>Validade da proposta:</strong> esta proposta &eacute; v&aacute;lida por <strong>15 dias corridos</strong> a partir da data de emiss&atilde;o (29/04/2026 &mdash; v&aacute;lida at&eacute; 14/05/2026).</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 9. Aceite -->
+  <section>
+    <h2><span class="section-num">09</span>Aceite</h2>
+    <div class="card">
+      <p style="margin-bottom:6px;">
+        Declaramos estar de acordo com os termos, escopo e modelo de permuta apresentados nesta proposta comercial, datada de <strong>29 de abril de 2026</strong>.
+      </p>
+
+      <div class="sign-block">
+        <div class="sign-line">
+          <strong>Daniel</strong>
+          ALL PRO Est&eacute;tica Automotiva<br>
+          Campinas / SP<br><br>
+          Data: ____ / ____ / ________
+        </div>
+        <div class="sign-line">
+          <strong>eSapiens Studio Digital</strong>
+          Respons&aacute;vel t&eacute;cnico e comercial<br>
+          gxavier@esapiens.com.br<br><br>
+          Data: 29 / 04 / 2026
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="proposal-footer">
+    <div>eSapiens Studio Digital &mdash; Proposta confidencial para ALL PRO Est&eacute;tica Automotiva</div>
+    <div>29.04.2026 &middot; v&aacute;lida at&eacute; 14.05.2026</div>
+  </footer>
+
+</main>
+</body>
+</html>

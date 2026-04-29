@@ -69,9 +69,9 @@ const waLink = getWhatsAppLink();
   </div>
 
   <div
-    class="container-base relative flex min-h-[88vh] flex-col items-start justify-center py-20 md:min-h-[92vh] md:py-32"
+    class="container-base relative flex min-h-[88vh] flex-col items-center justify-center py-20 md:min-h-[92vh] md:py-32"
   >
-    <div class="max-w-2xl">
+    <div class="max-w-2xl text-center">
       <!-- Badge premium -->
       <div
         class="mb-6 inline-flex items-center gap-2 rounded-full border px-4 py-1.5 backdrop-blur-sm"
@@ -91,13 +91,13 @@ const waLink = getWhatsAppLink();
       </h1>
 
       <p
-        class="mb-10 max-w-xl text-lg leading-relaxed text-[var(--color-neutral-300)] md:text-xl"
+        class="mb-10 mx-auto max-w-xl text-lg leading-relaxed text-[var(--color-neutral-300)] md:text-xl"
       >
         {business.taglineSecondary}. PPF, vitrificação, polimento, insulfilm e muito mais em Campinas — com mão
         de obra especializada e materiais premium.
       </p>
 
-      <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4">
+      <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-center sm:gap-4">
         <Button
           href={waLink}
           variant="primary"
@@ -123,7 +123,7 @@ const waLink = getWhatsAppLink();
 
       <!-- Trust indicators — confirmar números reais com o cliente -->
       <div
-        class="mt-12 flex flex-wrap items-center gap-x-6 gap-y-4 border-t pt-8"
+        class="mt-12 flex flex-wrap items-center justify-center gap-x-6 gap-y-4 border-t pt-8"
         style="border-color: rgba(255,255,255,0.08);"
       >
         <div>
