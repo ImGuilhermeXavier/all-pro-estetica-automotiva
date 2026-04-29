@@ -35,15 +35,20 @@ const differentials = [
       </p>
     </div>
 
-    <div class="reveal mt-16 grid gap-6 md:grid-cols-3 md:gap-8">
+    <div class="reveal-stagger mt-16 grid gap-6 md:grid-cols-3 md:gap-8">
       {
         differentials.map((d) => (
-          <div class="rounded-[var(--radius-lg)] border border-[var(--color-neutral-700)] bg-[var(--color-neutral-800)] p-6 md:p-8">
+          <div class="reveal-item group cursor-default rounded-[var(--radius-lg)] border border-[var(--color-neutral-700)] bg-[var(--color-neutral-800)] p-6 transition-all duration-300 ease-[var(--ease-out-soft)] hover:-translate-y-1.5 hover:border-[var(--color-brand)]/30 hover:shadow-[var(--shadow-brand)] md:p-8">
             <div
-              class="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-[var(--radius-md)] bg-[var(--color-brand-subtle)]"
+              class="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-[var(--radius-md)] bg-[var(--color-brand-subtle)] transition-all duration-300 group-hover:scale-110 group-hover:bg-[var(--color-brand-subtle)]"
               aria-hidden="true"
             >
-              <Icon name={d.icon} width={24} height={24} class="text-[var(--color-brand)]" />
+              <Icon
+                name={d.icon}
+                width={24}
+                height={24}
+                class="text-[var(--color-brand)] transition-transform duration-300 group-hover:rotate-12"
+              />
             </div>
             <h3 class="text-h3 mb-3 text-[var(--color-neutral-0)]">{d.title}</h3>
             <p class="text-sm leading-relaxed text-[var(--color-neutral-300)]">{d.description}</p>

@@ -38,8 +38,14 @@ const items = [
 
     <div class="reveal mt-14 grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-6 lg:grid-cols-3">
       {
-        items.map((item) => (
-          <figure class="group relative overflow-hidden rounded-[var(--radius-lg)] border border-[var(--color-neutral-700)]">
+        items.map((item, i) => (
+          <button
+            type="button"
+            class="group relative overflow-hidden rounded-[var(--radius-lg)] border border-[var(--color-neutral-700)] cursor-zoom-in w-full text-left focus-visible:outline-2 focus-visible:outline-[var(--color-brand)] focus-visible:outline-offset-2"
+            aria-label={`Ampliar foto: ${item.alt}`}
+            data-lightbox-trigger
+            data-index={i}
+          >
             <Image
               src={item.src}
               alt={item.alt}
@@ -54,7 +60,17 @@ const items = [
               class="pointer-events-none absolute inset-0 bg-gradient-to-t from-[var(--color-neutral-950)]/40 via-transparent to-transparent"
               aria-hidden="true"
             />
-          </figure>
+            <div
+              class="pointer-events-none absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              aria-hidden="true"
+            >
+              <span class="rounded-full bg-[var(--color-neutral-950)]/70 p-3 backdrop-blur-sm border border-[var(--color-neutral-700)]">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-[var(--color-brand)]">
+                  <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/>
+                </svg>
+              </span>
+            </div>
+          </button>
         ))
       }
     </div>
@@ -73,3 +89,322 @@ const items = [
     </div>
   </div>
 </section>
+
+<!-- Lightbox Dialog -->
+<dialog
+  id="gallery-lightbox"
+  class="lightbox-dialog"
+  aria-label="Visualizador de foto"
+  aria-modal="true"
+>
+  <button
+    id="lightbox-close"
+    type="button"
+    class="lightbox-close"
+    aria-label="Fechar"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+    </svg>
+  </button>
+
+  <button id="lightbox-prev" type="button" class="lightbox-nav lightbox-nav--prev" aria-label="Foto anterior">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="15 18 9 12 15 6"/>
+    </svg>
+  </button>
+
+  <figure class="lightbox-figure">
+    <img id="lightbox-img" src="" alt="" class="lightbox-img" />
+    <figcaption id="lightbox-caption" class="lightbox-caption"></figcaption>
+  </figure>
+
+  <button id="lightbox-next" type="button" class="lightbox-nav lightbox-nav--next" aria-label="Próxima foto">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="9 18 15 12 9 6"/>
+    </svg>
+  </button>
+
+  <div class="lightbox-counter" aria-live="polite" aria-atomic="true">
+    <span id="lightbox-count-current">1</span>
+    <span class="lightbox-counter-sep">/</span>
+    <span id="lightbox-count-total">1</span>
+  </div>
+</dialog>
+
+<style>
+  /* === Lightbox Dialog === */
+  .lightbox-dialog {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    margin: 0;
+    padding: 0;
+    border: none;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    transition:
+      opacity 300ms var(--ease-out-soft),
+      visibility 0ms 300ms;
+  }
+
+  .lightbox-dialog[open] {
+    opacity: 1;
+    visibility: visible;
+    transition:
+      opacity 300ms var(--ease-out-soft),
+      visibility 0ms 0ms;
+  }
+
+  /* backdrop nativo */
+  .lightbox-dialog::backdrop {
+    background: rgba(0, 0, 0, 0.88);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    opacity: 0;
+    transition: opacity 300ms var(--ease-out-soft);
+  }
+
+  .lightbox-dialog[open]::backdrop {
+    opacity: 1;
+  }
+
+  /* Figura central */
+  .lightbox-figure {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    max-width: min(90vw, 1100px);
+    max-height: 90dvh;
+    transform: scale(0.94);
+    transition: transform 350ms var(--ease-spring);
+  }
+
+  .lightbox-dialog[open] .lightbox-figure {
+    transform: scale(1);
+  }
+
+  .lightbox-img {
+    display: block;
+    max-width: 100%;
+    max-height: calc(90dvh - 3rem);
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-xl);
+    border: 1px solid var(--color-neutral-700);
+  }
+
+  .lightbox-caption {
+    color: var(--color-neutral-300);
+    font-size: 0.8125rem;
+    line-height: 1.5;
+    text-align: center;
+    max-width: 64ch;
+    padding-inline: 1rem;
+  }
+
+  /* Botão fechar */
+  .lightbox-close {
+    position: fixed;
+    top: 1.25rem;
+    right: 1.25rem;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: 9999px;
+    border: 1px solid var(--color-neutral-700);
+    background: var(--color-neutral-800);
+    color: var(--color-neutral-100);
+    cursor: pointer;
+    transition:
+      background 200ms var(--ease-out-soft),
+      color 200ms var(--ease-out-soft),
+      border-color 200ms var(--ease-out-soft);
+  }
+
+  .lightbox-close:hover {
+    background: var(--color-neutral-700);
+    color: var(--color-brand);
+    border-color: var(--color-brand);
+  }
+
+  .lightbox-close:focus-visible {
+    outline: 2px solid var(--color-brand);
+    outline-offset: 3px;
+  }
+
+  /* Botões de navegação */
+  .lightbox-nav {
+    position: fixed;
+    top: 50%;
+    translate: 0 -50%;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 9999px;
+    border: 1px solid var(--color-neutral-700);
+    background: var(--color-neutral-800);
+    color: var(--color-neutral-100);
+    cursor: pointer;
+    transition:
+      background 200ms var(--ease-out-soft),
+      color 200ms var(--ease-out-soft),
+      border-color 200ms var(--ease-out-soft),
+      opacity 200ms var(--ease-out-soft);
+  }
+
+  .lightbox-nav--prev { left: 1rem; }
+  .lightbox-nav--next { right: 1rem; }
+
+  .lightbox-nav:hover {
+    background: var(--color-neutral-700);
+    color: var(--color-brand);
+    border-color: var(--color-brand);
+  }
+
+  .lightbox-nav:focus-visible {
+    outline: 2px solid var(--color-brand);
+    outline-offset: 3px;
+  }
+
+  .lightbox-nav[disabled] {
+    opacity: 0.3;
+    pointer-events: none;
+  }
+
+  /* Contador */
+  .lightbox-counter {
+    position: fixed;
+    bottom: 1.5rem;
+    left: 50%;
+    translate: -50% 0;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--color-neutral-300);
+    background: var(--color-neutral-800);
+    border: 1px solid var(--color-neutral-700);
+    border-radius: 9999px;
+    padding: 0.35rem 0.875rem;
+    letter-spacing: 0.04em;
+  }
+
+  .lightbox-counter-sep {
+    color: var(--color-neutral-500);
+    margin-inline: 0.1rem;
+  }
+
+  /* Responsivo: nav lateral em telas pequenas */
+  @media (max-width: 480px) {
+    .lightbox-nav--prev { left: 0.5rem; }
+    .lightbox-nav--next { right: 0.5rem; }
+    .lightbox-nav { width: 2.5rem; height: 2.5rem; }
+    .lightbox-close { top: 0.75rem; right: 0.75rem; }
+  }
+
+  /* Reduz animação se o usuário preferir */
+  @media (prefers-reduced-motion: reduce) {
+    .lightbox-dialog,
+    .lightbox-figure {
+      transition: none !important;
+      transform: none !important;
+    }
+    .lightbox-dialog::backdrop {
+      transition: none !important;
+    }
+  }
+</style>
+
+<script>
+  (function () {
+    const dialog = document.getElementById("gallery-lightbox") as HTMLDialogElement | null;
+    if (!dialog) return;
+
+    const img = document.getElementById("lightbox-img") as HTMLImageElement;
+    const caption = document.getElementById("lightbox-caption") as HTMLElement;
+    const closeBtn = document.getElementById("lightbox-close") as HTMLButtonElement;
+    const prevBtn = document.getElementById("lightbox-prev") as HTMLButtonElement;
+    const nextBtn = document.getElementById("lightbox-next") as HTMLButtonElement;
+    const countCurrent = document.getElementById("lightbox-count-current") as HTMLElement;
+    const countTotal = document.getElementById("lightbox-count-total") as HTMLElement;
+
+    const triggers = Array.from(
+      document.querySelectorAll<HTMLButtonElement>("[data-lightbox-trigger]")
+    );
+
+    const total = triggers.length;
+    let current = 0;
+
+    countTotal.textContent = String(total);
+
+    function getImgSrc(btn: HTMLButtonElement): { src: string; alt: string } {
+      const image = btn.querySelector("img");
+      return {
+        src: image?.getAttribute("src") ?? image?.currentSrc ?? "",
+        alt: image?.getAttribute("alt") ?? "",
+      };
+    }
+
+    function show(index: number) {
+      current = (index + total) % total;
+      const { src, alt } = getImgSrc(triggers[current]);
+
+      img.src = src;
+      img.alt = alt;
+      caption.textContent = alt;
+      countCurrent.textContent = String(current + 1);
+
+      prevBtn.disabled = false;
+      nextBtn.disabled = false;
+    }
+
+    function openLightbox(index: number) {
+      show(index);
+      dialog!.showModal();
+      closeBtn.focus();
+    }
+
+    function closeLightbox() {
+      dialog!.close();
+      triggers[current]?.focus();
+    }
+
+    triggers.forEach((btn, i) => {
+      btn.addEventListener("click", () => openLightbox(i));
+    });
+
+    closeBtn.addEventListener("click", closeLightbox);
+    prevBtn.addEventListener("click", () => show(current - 1));
+    nextBtn.addEventListener("click", () => show(current + 1));
+
+    // Fechar ao clicar no backdrop (fora da figure)
+    dialog.addEventListener("click", (e) => {
+      if (e.target === dialog) closeLightbox();
+    });
+
+    // Navegação por teclado
+    dialog.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowLeft") { e.preventDefault(); show(current - 1); }
+      if (e.key === "ArrowRight") { e.preventDefault(); show(current + 1); }
+    });
+  })();
+</script>

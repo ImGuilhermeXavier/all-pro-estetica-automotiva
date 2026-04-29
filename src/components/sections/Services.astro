@@ -17,9 +17,13 @@ import { services } from "@content/services";
     </div>
 
     <div
-      class="reveal mt-14 grid grid-cols-1 gap-5 sm:grid-cols-2 md:gap-6 lg:grid-cols-3"
+      class="reveal-stagger mt-14 grid grid-cols-1 gap-5 sm:grid-cols-2 md:gap-6 lg:grid-cols-3"
     >
-      {services.map((service) => <ServiceCard service={service} />)}
+      {services.map((service) => (
+        <div class="reveal-item">
+          <ServiceCard service={service} />
+        </div>
+      ))}
     </div>
   </div>
 </section>

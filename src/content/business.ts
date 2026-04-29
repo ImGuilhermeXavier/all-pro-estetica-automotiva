@@ -37,7 +37,7 @@ export const business = {
     cid: "6271074181028102604",
     url: "https://www.google.com/maps?cid=6271074181028102604",
     embedSrc:
-      "https://www.google.com/maps?cid=6271074181028102604&output=embed",
+      "https://maps.google.com/maps?q=Rua+Jos%C3%A9+Pugliesi+Filho,+420,+Ch%C3%A1cara+Santa+Margarida,+Campinas,+SP,+13085-415,+Brasil&output=embed&z=17",
   },
 
   // Horário (Seg–Sex 08–17, Sáb 08–16, Dom fechado)

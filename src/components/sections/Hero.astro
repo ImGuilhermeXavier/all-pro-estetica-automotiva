@@ -123,20 +123,29 @@ const waLink = getWhatsAppLink();
 
       <!-- Trust indicators — confirmar números reais com o cliente -->
       <div
-        class="mt-12 flex flex-wrap items-center justify-center gap-x-6 gap-y-4 border-t pt-8"
+        class="reveal-stagger mt-12 flex flex-wrap items-center justify-center gap-x-6 gap-y-4 border-t pt-8"
         style="border-color: rgba(255,255,255,0.08);"
       >
-        <div>
-          <p class="font-display text-2xl font-bold text-[var(--color-brand)]">+1.000</p>
+        <div class="reveal-item text-center">
+          <p
+            class="font-display text-2xl font-bold text-[var(--color-brand)]"
+            data-count-up="1000"
+            data-count-prefix="+"
+          >+1.000</p>
           <p class="text-sm text-[var(--color-neutral-400)]">carros atendidos</p>
         </div>
-        <div class="h-8 w-px hidden sm:block" style="background: rgba(255,255,255,0.10);"></div>
-        <div>
-          <p class="font-display text-2xl font-bold text-[var(--color-brand)]">5.0 ★</p>
+        <div class="reveal-item h-8 w-px hidden sm:block" style="background: rgba(255,255,255,0.10);"></div>
+        <div class="reveal-item text-center">
+          <p
+            class="font-display text-2xl font-bold text-[var(--color-brand)]"
+            data-count-up="5"
+            data-count-decimals="1"
+            data-count-suffix=" ★"
+          >5.0 ★</p>
           <p class="text-sm text-[var(--color-neutral-400)]">avaliação no Google</p>
         </div>
-        <div class="h-8 w-px hidden sm:block" style="background: rgba(255,255,255,0.10);"></div>
-        <div>
+        <div class="reveal-item h-8 w-px hidden sm:block" style="background: rgba(255,255,255,0.10);"></div>
+        <div class="reveal-item text-center">
           <p class="font-display text-2xl font-bold text-[var(--color-brand)]">#1</p>
           <p class="text-sm text-[var(--color-neutral-400)]">referência em Barão Geraldo</p>
         </div>
@@ -144,10 +153,10 @@ const waLink = getWhatsAppLink();
     </div>
   </div>
 
-  <!-- Linha separadora com degradê da cor da marca -->
+  <!-- Linha separadora com shimmer animado -->
   <div
-    class="absolute bottom-0 left-0 right-0 h-px"
-    style="background: linear-gradient(to right, transparent 0%, rgba(245,211,0,0.45) 25%, rgba(245,211,0,0.45) 75%, transparent 100%);"
+    class="animate-shimmer absolute bottom-0 left-0 right-0 h-px"
+    style="background: linear-gradient(90deg, transparent 0%, rgba(245,211,0,0.2) 20%, rgba(245,211,0,0.7) 50%, rgba(245,211,0,0.2) 80%, transparent 100%); background-size: 200% auto;"
     aria-hidden="true"
   ></div>
 </section>

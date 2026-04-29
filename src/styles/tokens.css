@@ -267,6 +267,48 @@ body {
   transform: translateY(0);
 }
 
+/* Reveal com stagger (itens individuais de grid) */
+.reveal-item {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 500ms var(--ease-out-soft),
+    transform 500ms var(--ease-spring);
+}
+
+.reveal-item.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Counter pop: flash sutil ao terminar a contagem */
+@keyframes counter-pop {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.12); }
+  100% { transform: scale(1); }
+}
+
+.counter-pop {
+  animation: counter-pop 300ms var(--ease-spring);
+}
+
+/* Shimmer animado (linha da marca) */
+@keyframes shimmer-slide {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.animate-shimmer {
+  background-size: 200% auto;
+  animation: shimmer-slide 3s linear infinite;
+}
+
+/* Glow pulse para ícones de destaque */
+@keyframes icon-glow {
+  0%, 100% { filter: drop-shadow(0 0 0px rgba(245, 211, 0, 0)); }
+  50% { filter: drop-shadow(0 0 6px rgba(245, 211, 0, 0.6)); }
+}
+
 /* Reduced motion: zera animações sensíveis */
 @media (prefers-reduced-motion: reduce) {
   *,
@@ -278,7 +320,8 @@ body {
     scroll-behavior: auto !important;
   }
 
-  .reveal {
+  .reveal,
+  .reveal-item {
     opacity: 1;
     transform: none;
   }
