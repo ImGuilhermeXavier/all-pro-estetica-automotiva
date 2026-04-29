@@ -8,7 +8,11 @@ import { business } from "@content/business";
 const waLink = getWhatsAppLink();
 ---
 
-<section class="relative overflow-hidden bg-[var(--color-neutral-900)]">
+<section
+  class="relative overflow-hidden"
+  style="background: linear-gradient(135deg, #140c00 0%, #0c0a00 40%, #08080f 100%);"
+>
+  <!-- Fundo: foto do carro -->
   <div class="absolute inset-0 -z-10">
     <Image
       src={carro}
@@ -20,36 +24,76 @@ const waLink = getWhatsAppLink();
       fetchpriority="high"
       quality={85}
     />
+
+    <!-- Camada 1: escurecimento base com leve warmth âmbar -->
     <div
-      class="absolute inset-0 bg-gradient-to-b from-[var(--color-neutral-900)]/60 via-[var(--color-neutral-900)]/65 to-[var(--color-neutral-900)]/95"
+      class="absolute inset-0"
+      style="background: rgba(12,8,0,0.42);"
       aria-hidden="true"
-    >
-    </div>
+    ></div>
+
+    <!-- Camada 2: gradiente diagonal warm-dark à esquerda → transparente à direita -->
     <div
-      class="absolute inset-0 bg-gradient-to-r from-[var(--color-neutral-900)]/70 via-transparent to-transparent"
+      class="absolute inset-0"
+      style="background: linear-gradient(108deg, rgba(18,11,2,0.97) 0%, rgba(16,10,2,0.91) 22%, rgba(12,8,2,0.62) 48%, rgba(8,5,0,0.18) 70%, transparent 100%);"
       aria-hidden="true"
-    >
-    </div>
+    ></div>
+
+    <!-- Camada 3: vinheta de topo fria – cria contraste cool/warm com o glow dourado de baixo -->
+    <div
+      class="absolute top-0 left-0 right-0 h-40"
+      style="background: linear-gradient(to bottom, rgba(4,4,14,0.72) 0%, rgba(4,4,14,0.30) 55%, transparent 100%);"
+      aria-hidden="true"
+    ></div>
+
+    <!-- Camada 4: vinheta de rodapé – transição para a próxima seção -->
+    <div
+      class="absolute bottom-0 left-0 right-0 h-64"
+      style="background: linear-gradient(to top, rgba(14,9,0,1) 0%, rgba(12,8,0,0.80) 35%, transparent 100%);"
+      aria-hidden="true"
+    ></div>
+
+    <!-- Camada 5: glow dourado amplo – fonte de luz da marca -->
+    <div
+      class="absolute bottom-0 left-0 h-[70%] w-[80%]"
+      style="background: radial-gradient(ellipse at 5% 100%, rgba(245,211,0,0.14) 0%, rgba(245,211,0,0.06) 35%, rgba(245,211,0,0.02) 60%, transparent 75%);"
+      aria-hidden="true"
+    ></div>
+
+    <!-- Camada 6: segundo glow dourado – reflexo à direita para profundidade -->
+    <div
+      class="absolute top-[30%] right-0 h-[40%] w-[35%]"
+      style="background: radial-gradient(ellipse at 100% 50%, rgba(245,211,0,0.05) 0%, transparent 65%);"
+      aria-hidden="true"
+    ></div>
   </div>
 
   <div
     class="container-base relative flex min-h-[88vh] flex-col items-start justify-center py-20 md:min-h-[92vh] md:py-32"
   >
-    <div class="max-w-3xl">
-      <p
-        class="text-overline mb-5 text-[var(--color-brand)]"
+    <div class="max-w-2xl">
+      <!-- Badge premium -->
+      <div
+        class="mb-6 inline-flex items-center gap-2 rounded-full border px-4 py-1.5 backdrop-blur-sm"
+        style="border-color: rgba(245,211,0,0.28); background: rgba(245,211,0,0.06);"
       >
-        Estética automotiva premium · Campinas - SP
-      </p>
+        <span
+          class="h-1.5 w-1.5 rounded-full bg-[var(--color-brand)]"
+          aria-hidden="true"
+        ></span>
+        <span class="text-overline text-[var(--color-brand)]">
+          Estética automotiva premium · Campinas - SP
+        </span>
+      </div>
 
       <h1 class="text-display mb-6 uppercase text-[var(--color-neutral-0)]">
         {business.taglinePrimary}
       </h1>
 
       <p
-        class="mb-10 max-w-2xl text-lg leading-relaxed text-[var(--color-neutral-100)] md:text-xl"
+        class="mb-10 max-w-xl text-lg leading-relaxed text-[var(--color-neutral-300)] md:text-xl"
       >
-        {business.taglineSecondary}. PPF, vitrificação, polimento, insulfilm e muito mais — com mão
+        {business.taglineSecondary}. PPF, vitrificação, polimento, insulfilm e muito mais em Campinas — com mão
         de obra especializada e materiais premium.
       </p>
 
@@ -58,7 +102,7 @@ const waLink = getWhatsAppLink();
           href={waLink}
           variant="primary"
           size="lg"
-          icon="lucide:message-circle"
+          icon="lucide:message-circle-more"
           external
           ariaLabel="Solicitar orçamento no WhatsApp"
           dataOrigin="hero_primary"
@@ -76,6 +120,34 @@ const waLink = getWhatsAppLink();
           Ver serviços
         </Button>
       </div>
+
+      <!-- Trust indicators — confirmar números reais com o cliente -->
+      <div
+        class="mt-12 flex flex-wrap items-center gap-x-6 gap-y-4 border-t pt-8"
+        style="border-color: rgba(255,255,255,0.08);"
+      >
+        <div>
+          <p class="font-display text-2xl font-bold text-[var(--color-brand)]">+1.000</p>
+          <p class="text-sm text-[var(--color-neutral-400)]">carros atendidos</p>
+        </div>
+        <div class="h-8 w-px hidden sm:block" style="background: rgba(255,255,255,0.10);"></div>
+        <div>
+          <p class="font-display text-2xl font-bold text-[var(--color-brand)]">5.0 ★</p>
+          <p class="text-sm text-[var(--color-neutral-400)]">avaliação no Google</p>
+        </div>
+        <div class="h-8 w-px hidden sm:block" style="background: rgba(255,255,255,0.10);"></div>
+        <div>
+          <p class="font-display text-2xl font-bold text-[var(--color-brand)]">#1</p>
+          <p class="text-sm text-[var(--color-neutral-400)]">referência em Barão Geraldo</p>
+        </div>
+      </div>
     </div>
   </div>
+
+  <!-- Linha separadora com degradê da cor da marca -->
+  <div
+    class="absolute bottom-0 left-0 right-0 h-px"
+    style="background: linear-gradient(to right, transparent 0%, rgba(245,211,0,0.45) 25%, rgba(245,211,0,0.45) 75%, transparent 100%);"
+    aria-hidden="true"
+  ></div>
 </section>

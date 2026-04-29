@@ -15,6 +15,7 @@ const href = getWhatsAppLink(service.whatsappMessage);
   href={href}
   target="_blank"
   rel="noopener noreferrer"
+  aria-label={`Solicitar orçamento de ${service.name} em Campinas`}
   class="group flex h-full min-h-[280px] flex-col rounded-[var(--radius-lg)] border border-[var(--color-neutral-700)] bg-[var(--color-neutral-800)] p-6 transition-all duration-300 ease-[var(--ease-out-soft)] hover:-translate-y-1 hover:border-[var(--color-brand)]/40 hover:bg-[var(--color-neutral-850)] hover:shadow-[var(--shadow-brand)] focus-visible:border-[var(--color-brand)] focus-visible:bg-[var(--color-neutral-850)] motion-reduce:hover:translate-y-0 motion-reduce:transition-none md:min-h-[320px] md:p-8"
   data-origin={`service_${service.slug}`}
 >

@@ -33,6 +33,7 @@ export default defineConfig({
           "hammer",
           "circle-dot",
           "message-circle",
+          "message-circle-more",
           "phone",
           "map-pin",
           "clock",

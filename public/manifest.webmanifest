@@ -1,0 +1,24 @@
+{
+  "name": "ALL PRO Estética Automotiva",
+  "short_name": "ALL PRO",
+  "description": "Estética automotiva premium em Campinas. PPF, vitrificação, polimento, insulfilm, envelopamento, funilaria e martelinho de ouro.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0A0A0A",
+  "theme_color": "#0A0A0A",
+  "lang": "pt-BR",
+  "icons": [
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
