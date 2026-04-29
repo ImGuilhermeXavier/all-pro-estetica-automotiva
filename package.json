@@ -1,0 +1,38 @@
+{
+  "name": "all-pro-estetica-automotiva",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Landing page institucional da ALL PRO Estética Automotiva (Campinas-SP)",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "check": "astro check",
+    "format": "prettier --write \"**/*.{astro,ts,tsx,js,jsx,md,css,json}\"",
+    "format:check": "prettier --check \"**/*.{astro,ts,tsx,js,jsx,md,css,json}\""
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.9.4",
+    "@astrojs/partytown": "^2.1.4",
+    "@astrojs/sitemap": "^3.2.1",
+    "@fontsource-variable/manrope": "^5.1.1",
+    "@fontsource/rajdhani": "^5.1.0",
+    "@iconify-json/lucide": "^1.2.18",
+    "@tailwindcss/vite": "^4.0.0",
+    "astro": "^5.1.5",
+    "astro-icon": "^1.1.5",
+    "tailwindcss": "^4.0.0",
+    "typescript": "^5.7.2"
+  },
+  "devDependencies": {
+    "prettier": "^3.4.2",
+    "prettier-plugin-astro": "^0.14.1",
+    "prettier-plugin-tailwindcss": "^0.6.9"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

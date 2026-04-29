@@ -1,0 +1,55 @@
+---
+import { Icon } from "astro-icon/components";
+
+const differentials = [
+  {
+    icon: "lucide:gem",
+    title: "Materiais premium",
+    description:
+      "Trabalhamos com produtos e películas de alta performance, escolhidos para durar e proteger.",
+  },
+  {
+    icon: "lucide:sparkles",
+    title: "Mão de obra especializada",
+    description:
+      "Profissionais treinados em técnicas modernas de detailing, com atenção ao detalhe em cada serviço.",
+  },
+  {
+    icon: "lucide:shield-check",
+    title: "Atendimento personalizado",
+    description:
+      "Cada carro recebe avaliação individual. Você recebe orientação clara antes, durante e depois do serviço.",
+  },
+];
+---
+
+<section class="bg-[var(--color-neutral-900)] py-20 md:py-24">
+  <div class="container-base">
+    <div class="reveal mx-auto max-w-3xl text-center">
+      <p class="text-overline mb-4 text-[var(--color-brand)]">Sobre a ALL PRO</p>
+      <h2 class="text-h2 mb-6 text-[var(--color-neutral-0)]">O detalhe faz a diferença</h2>
+      <p class="text-lg leading-relaxed text-[var(--color-neutral-200)]">
+        Cuidamos do seu carro como se fosse o nosso. Combinamos materiais premium, técnica refinada
+        e um atendimento que escuta antes de propor — para entregar resultado de alto padrão em cada
+        serviço.
+      </p>
+    </div>
+
+    <div class="reveal mt-16 grid gap-6 md:grid-cols-3 md:gap-8">
+      {
+        differentials.map((d) => (
+          <div class="rounded-[var(--radius-lg)] border border-[var(--color-neutral-700)] bg-[var(--color-neutral-800)] p-6 md:p-8">
+            <div
+              class="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-[var(--radius-md)] bg-[var(--color-brand-subtle)]"
+              aria-hidden="true"
+            >
+              <Icon name={d.icon} width={24} height={24} class="text-[var(--color-brand)]" />
+            </div>
+            <h3 class="text-h3 mb-3 text-[var(--color-neutral-0)]">{d.title}</h3>
+            <p class="text-sm leading-relaxed text-[var(--color-neutral-300)]">{d.description}</p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

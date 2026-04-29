@@ -1,0 +1,48 @@
+---
+import { Icon } from "astro-icon/components";
+import { getWhatsAppLink } from "@lib/whatsapp";
+import type { Service } from "@content/services";
+
+interface Props {
+  service: Service;
+}
+
+const { service } = Astro.props;
+const href = getWhatsAppLink(service.whatsappMessage);
+---
+
+<a
+  href={href}
+  target="_blank"
+  rel="noopener noreferrer"
+  class="group flex h-full min-h-[280px] flex-col rounded-[var(--radius-lg)] border border-[var(--color-neutral-700)] bg-[var(--color-neutral-800)] p-6 transition-all duration-300 ease-[var(--ease-out-soft)] hover:-translate-y-1 hover:border-[var(--color-brand)]/40 hover:bg-[var(--color-neutral-850)] hover:shadow-[var(--shadow-brand)] focus-visible:border-[var(--color-brand)] focus-visible:bg-[var(--color-neutral-850)] motion-reduce:hover:translate-y-0 motion-reduce:transition-none md:min-h-[320px] md:p-8"
+  data-origin={`service_${service.slug}`}
+>
+  <div
+    class="mb-5 inline-flex h-14 w-14 items-center justify-center rounded-[var(--radius-md)] bg-[var(--color-brand-subtle)]"
+    aria-hidden="true"
+  >
+    <Icon name={service.icon} width={28} height={28} class="text-[var(--color-brand)]" />
+  </div>
+
+  <h3 class="text-h3 mb-3 text-[var(--color-neutral-0)]">
+    {service.shortName}
+  </h3>
+
+  <p class="mb-6 flex-grow text-sm leading-relaxed text-[var(--color-neutral-300)]">
+    {service.description}
+  </p>
+
+  <div
+    class="flex items-center gap-2 border-t border-[var(--color-neutral-700)] pt-5 text-sm font-semibold text-[var(--color-brand)] transition-all duration-200 group-hover:gap-3"
+  >
+    <span>Fazer orçamento</span>
+    <Icon
+      name="lucide:arrow-right"
+      width={16}
+      height={16}
+      class="transition-transform duration-200 group-hover:translate-x-1"
+      aria-hidden="true"
+    />
+  </div>
+</a>

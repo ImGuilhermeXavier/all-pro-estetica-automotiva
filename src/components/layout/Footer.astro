@@ -1,0 +1,92 @@
+---
+import { Icon } from "astro-icon/components";
+import { business } from "@content/business";
+import { getWhatsAppLink, getPhoneLink } from "@lib/whatsapp";
+
+const year = new Date().getFullYear();
+const waLink = getWhatsAppLink();
+---
+
+<footer class="border-t border-[var(--color-neutral-700)] bg-[var(--color-neutral-950)] py-12 md:py-16">
+  <div class="container-base">
+    <div class="grid gap-10 md:grid-cols-3">
+      <div>
+        <p class="mb-3 font-display text-2xl font-bold tracking-tight text-[var(--color-neutral-0)]">
+          ALL PRO
+        </p>
+        <p class="text-sm leading-relaxed text-[var(--color-neutral-300)]">
+          {business.description}
+        </p>
+      </div>
+
+      <div>
+        <p class="text-overline mb-4 text-[var(--color-neutral-400)]">Contato</p>
+        <ul class="space-y-3 text-sm text-[var(--color-neutral-200)]">
+          <li>
+            <a
+              href={waLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 transition-colors hover:text-[var(--color-brand)]"
+              data-origin="footer_whatsapp"
+            >
+              <Icon name="lucide:message-circle" width={16} height={16} aria-hidden="true" />
+              {business.whatsapp.pretty}
+            </a>
+          </li>
+          <li>
+            <a
+              href={getPhoneLink()}
+              class="inline-flex items-center gap-2 transition-colors hover:text-[var(--color-brand)]"
+              data-origin="footer_phone"
+            >
+              <Icon name="lucide:phone" width={16} height={16} aria-hidden="true" />
+              Ligar
+            </a>
+          </li>
+          <li class="flex items-start gap-2 text-[var(--color-neutral-300)]">
+            <Icon
+              name="lucide:map-pin"
+              width={16}
+              height={16}
+              class="mt-1 shrink-0"
+              aria-hidden="true"
+            />
+            <span>
+              {business.address.street}<br />
+              {business.address.neighborhood}<br />
+              {business.address.city} - {business.address.state}, {business.address.postalCode}
+            </span>
+          </li>
+        </ul>
+      </div>
+
+      <div>
+        <p class="text-overline mb-4 text-[var(--color-neutral-400)]">Horário</p>
+        <ul class="space-y-1.5 text-sm text-[var(--color-neutral-200)]">
+          <li class="flex justify-between gap-4">
+            <span>Segunda a Sexta</span>
+            <span class="text-[var(--color-neutral-300)]">08:00 — 17:00</span>
+          </li>
+          <li class="flex justify-between gap-4">
+            <span>Sábado</span>
+            <span class="text-[var(--color-neutral-300)]">08:00 — 16:00</span>
+          </li>
+          <li class="flex justify-between gap-4">
+            <span>Domingo</span>
+            <span class="text-[var(--color-neutral-400)]">Fechado</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div
+      class="mt-10 flex flex-col items-start justify-between gap-4 border-t border-[var(--color-neutral-700)] pt-6 text-xs text-[var(--color-neutral-400)] md:flex-row md:items-center"
+    >
+      <p>
+        © {year} {business.name}. Todos os direitos reservados.
+      </p>
+      <p class="text-[var(--color-neutral-500)]">{business.taglineSecondary}</p>
+    </div>
+  </div>
+</footer>

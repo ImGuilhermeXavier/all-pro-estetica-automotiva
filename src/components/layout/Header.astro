@@ -1,0 +1,121 @@
+---
+import { Icon } from "astro-icon/components";
+import { Image } from "astro:assets";
+import logo from "@assets/logo.jpg";
+import Button from "@components/ui/Button.astro";
+import { getWhatsAppLink } from "@lib/whatsapp";
+import { business } from "@content/business";
+
+const navItems = [
+  { label: "Serviços", href: "#servicos" },
+  { label: "Galeria", href: "#galeria" },
+  { label: "Localização", href: "#localizacao" },
+  { label: "Contato", href: "#contato" },
+];
+
+const waLink = getWhatsAppLink();
+---
+
+<header
+  class="sticky top-0 z-[200] border-b border-[var(--color-neutral-700)]/60 bg-[var(--color-neutral-900)]/85 backdrop-blur-md"
+>
+  <div class="container-base flex h-16 items-center justify-between gap-4 md:h-20">
+    <a
+      href="/"
+      class="flex items-center gap-3"
+      aria-label={`${business.name} — voltar ao início`}
+    >
+      <Image
+        src={logo}
+        alt={business.name}
+        width={48}
+        height={48}
+        class="h-10 w-10 rounded-full md:h-12 md:w-12"
+        loading="eager"
+      />
+      <span class="hidden font-display text-lg font-bold tracking-tight text-[var(--color-neutral-0)] sm:inline">
+        ALL PRO
+      </span>
+    </a>
+
+    <nav class="hidden items-center gap-8 md:flex" aria-label="Navegação principal">
+      {
+        navItems.map((item) => (
+          <a
+            href={item.href}
+            class="text-sm font-medium text-[var(--color-neutral-200)] transition-colors duration-150 hover:text-[var(--color-brand)] focus-visible:text-[var(--color-brand)]"
+          >
+            {item.label}
+          </a>
+        ))
+      }
+    </nav>
+
+    <div class="flex items-center gap-2">
+      <Button
+        href={waLink}
+        variant="whatsapp"
+        size="sm"
+        icon="lucide:message-circle"
+        external
+        ariaLabel="Solicitar orçamento no WhatsApp"
+        dataOrigin="header"
+      >
+        <span class="hidden sm:inline">Orçamento</span>
+        <span class="inline sm:hidden">WhatsApp</span>
+      </Button>
+
+      <button
+        type="button"
+        class="inline-flex h-10 w-10 items-center justify-center rounded-[var(--radius-md)] text-[var(--color-neutral-0)] hover:bg-[var(--color-neutral-800)] md:hidden"
+        aria-label="Abrir menu de navegação"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+        data-mobile-menu-trigger
+      >
+        <Icon name="lucide:menu" width={24} height={24} aria-hidden="true" />
+      </button>
+    </div>
+  </div>
+
+  <div
+    id="mobile-menu"
+    class="hidden border-t border-[var(--color-neutral-700)] bg-[var(--color-neutral-900)] md:hidden"
+    data-mobile-menu
+  >
+    <nav class="container-base flex flex-col gap-1 py-4" aria-label="Navegação móvel">
+      {
+        navItems.map((item) => (
+          <a
+            href={item.href}
+            class="rounded-[var(--radius-md)] px-3 py-3 text-base font-medium text-[var(--color-neutral-100)] transition-colors duration-150 hover:bg-[var(--color-neutral-800)] hover:text-[var(--color-brand)]"
+            data-mobile-menu-link
+          >
+            {item.label}
+          </a>
+        ))
+      }
+    </nav>
+  </div>
+</header>
+
+<script>
+  const trigger = document.querySelector<HTMLButtonElement>("[data-mobile-menu-trigger]");
+  const menu = document.querySelector<HTMLElement>("[data-mobile-menu]");
+  const links = document.querySelectorAll<HTMLAnchorElement>("[data-mobile-menu-link]");
+
+  if (trigger && menu) {
+    trigger.addEventListener("click", () => {
+      const isOpen = !menu.classList.contains("hidden");
+      menu.classList.toggle("hidden");
+      trigger.setAttribute("aria-expanded", String(!isOpen));
+    });
+
+    links.forEach((link) => {
+      link.addEventListener("click", () => {
+        menu.classList.add("hidden");
+        trigger.setAttribute("aria-expanded", "false");
+      });
+    });
+  }
+</script>

@@ -1,0 +1,56 @@
+---
+import Button from "@components/ui/Button.astro";
+import { getWhatsAppLink, getPhoneLink } from "@lib/whatsapp";
+import { business } from "@content/business";
+
+const waLink = getWhatsAppLink();
+---
+
+<section id="contato" class="scroll-mt-20 bg-[var(--color-neutral-900)] py-20 md:py-24">
+  <div class="container-base">
+    <div
+      class="reveal relative overflow-hidden rounded-[var(--radius-xl)] border border-[var(--color-brand)]/20 bg-gradient-to-br from-[var(--color-neutral-800)] to-[var(--color-neutral-850)] p-10 md:p-16"
+    >
+      <div
+        class="pointer-events-none absolute -right-32 -top-32 h-72 w-72 rounded-full bg-[var(--color-brand)] opacity-[0.06] blur-3xl"
+        aria-hidden="true"
+      >
+      </div>
+
+      <div class="relative max-w-2xl">
+        <p class="text-overline mb-4 text-[var(--color-brand)]">Pronto para começar?</p>
+        <h2 class="text-h2 mb-5 text-[var(--color-neutral-0)]">
+          Solicite seu orçamento agora
+        </h2>
+        <p class="mb-10 text-lg leading-relaxed text-[var(--color-neutral-200)]">
+          Mande uma mensagem no WhatsApp ou ligue. Respondemos rápido e te orientamos sobre o melhor
+          serviço para o seu carro.
+        </p>
+
+        <div class="flex flex-col gap-3 sm:flex-row sm:items-center">
+          <Button
+            href={waLink}
+            variant="whatsapp"
+            size="lg"
+            icon="lucide:message-circle"
+            external
+            ariaLabel="Solicitar orçamento no WhatsApp"
+            dataOrigin="cta_final_whatsapp"
+          >
+            Falar no WhatsApp
+          </Button>
+
+          <Button
+            href={getPhoneLink()}
+            variant="ghost"
+            size="lg"
+            icon="lucide:phone"
+            dataOrigin="cta_final_phone"
+          >
+            {business.whatsapp.pretty}
+          </Button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

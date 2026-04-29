@@ -1,0 +1,84 @@
+---
+import { Icon } from "astro-icon/components";
+
+type Variant = "primary" | "whatsapp" | "ghost";
+type Size = "sm" | "md" | "lg";
+
+interface Props {
+  href?: string;
+  variant?: Variant;
+  size?: Size;
+  icon?: string;
+  iconRight?: string;
+  external?: boolean;
+  ariaLabel?: string;
+  class?: string;
+  id?: string;
+  dataOrigin?: string;
+}
+
+const {
+  href,
+  variant = "primary",
+  size = "md",
+  icon,
+  iconRight,
+  external = false,
+  ariaLabel,
+  class: className = "",
+  id,
+  dataOrigin,
+} = Astro.props;
+
+const base =
+  "inline-flex items-center justify-center gap-2 font-semibold tracking-tight rounded-[var(--radius-md)] transition-[background-color,box-shadow,transform,color,border-color] duration-200 ease-[var(--ease-out-soft)] focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[var(--color-brand)] disabled:cursor-not-allowed disabled:opacity-50 motion-reduce:transition-none";
+
+const sizeClasses: Record<Size, string> = {
+  sm: "px-5 py-2.5 text-sm min-h-[40px]",
+  md: "px-7 py-3.5 text-base min-h-[48px]",
+  lg: "px-8 py-4 text-lg min-h-[56px]",
+};
+
+const variantClasses: Record<Variant, string> = {
+  primary:
+    "bg-[var(--color-brand)] text-[var(--color-neutral-900)] shadow-[var(--shadow-md)] hover:bg-[var(--color-brand-hover)] hover:shadow-[var(--shadow-lg)] hover:-translate-y-[2px] active:bg-[var(--color-brand-active)] active:translate-y-0 active:shadow-[var(--shadow-sm)]",
+  whatsapp:
+    "bg-[var(--color-whatsapp)] text-[var(--color-neutral-900)] shadow-[var(--shadow-whatsapp)] hover:bg-[var(--color-whatsapp-hover)] hover:-translate-y-[2px] active:bg-[var(--color-whatsapp-active)] active:translate-y-0",
+  ghost:
+    "bg-transparent text-[var(--color-neutral-0)] border border-[var(--color-neutral-600)] hover:bg-[var(--color-neutral-800)] hover:text-[var(--color-brand)] hover:border-[var(--color-brand)] active:bg-[var(--color-neutral-850)]",
+};
+
+const classes = `${base} ${sizeClasses[size]} ${variantClasses[variant]} ${className}`;
+const iconSize = size === "lg" ? 22 : size === "md" ? 20 : 18;
+
+const externalProps = external
+  ? { target: "_blank", rel: "noopener noreferrer" }
+  : {};
+---
+
+{
+  href ? (
+    <a
+      href={href}
+      class={classes}
+      aria-label={ariaLabel}
+      id={id}
+      data-origin={dataOrigin}
+      {...externalProps}
+    >
+      {icon && <Icon name={icon} width={iconSize} height={iconSize} aria-hidden="true" />}
+      <slot />
+      {iconRight && (
+        <Icon name={iconRight} width={iconSize} height={iconSize} aria-hidden="true" />
+      )}
+    </a>
+  ) : (
+    <button type="button" class={classes} aria-label={ariaLabel} id={id} data-origin={dataOrigin}>
+      {icon && <Icon name={icon} width={iconSize} height={iconSize} aria-hidden="true" />}
+      <slot />
+      {iconRight && (
+        <Icon name={iconRight} width={iconSize} height={iconSize} aria-hidden="true" />
+      )}
+    </button>
+  )
+}

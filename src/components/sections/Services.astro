@@ -1,0 +1,25 @@
+---
+import ServiceCard from "@components/ui/ServiceCard.astro";
+import { services } from "@content/services";
+---
+
+<section
+  id="servicos"
+  class="scroll-mt-20 bg-[var(--color-neutral-950)] py-20 md:py-24"
+>
+  <div class="container-base">
+    <div class="reveal mx-auto max-w-2xl text-center">
+      <p class="text-overline mb-4 text-[var(--color-brand)]">Nossos serviços</p>
+      <h2 class="text-h2 mb-5 text-[var(--color-neutral-0)]">Tudo o que seu carro precisa</h2>
+      <p class="text-lg leading-relaxed text-[var(--color-neutral-200)]">
+        Da proteção premium ao reparo essencial — todos os serviços com a qualidade ALL PRO.
+      </p>
+    </div>
+
+    <div
+      class="reveal mt-14 grid grid-cols-1 gap-5 sm:grid-cols-2 md:gap-6 lg:grid-cols-3"
+    >
+      {services.map((service) => <ServiceCard service={service} />)}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,115 @@
+---
+import { Icon } from "astro-icon/components";
+import Button from "@components/ui/Button.astro";
+import { business } from "@content/business";
+import { getPhoneLink } from "@lib/whatsapp";
+---
+
+<section
+  id="localizacao"
+  class="scroll-mt-20 bg-[var(--color-neutral-950)] py-20 md:py-24"
+>
+  <div class="container-base">
+    <div class="reveal mx-auto max-w-2xl text-center">
+      <p class="text-overline mb-4 text-[var(--color-brand)]">Onde estamos</p>
+      <h2 class="text-h2 mb-5 text-[var(--color-neutral-0)]">Visite a ALL PRO em Campinas</h2>
+      <p class="text-lg leading-relaxed text-[var(--color-neutral-200)]">
+        Estamos prontos para atender. Venha conhecer nosso espaço.
+      </p>
+    </div>
+
+    <div class="reveal mt-14 grid gap-6 lg:grid-cols-5 lg:gap-8">
+      <div
+        class="overflow-hidden rounded-[var(--radius-lg)] border border-[var(--color-neutral-700)] lg:col-span-3"
+      >
+        <iframe
+          src={business.maps.embedSrc}
+          width="100%"
+          height="420"
+          style="border:0; display:block;"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title={`Localização da ${business.name} no Google Maps`}
+          class="h-[320px] w-full md:h-[420px]"></iframe>
+      </div>
+
+      <div class="flex flex-col gap-4 lg:col-span-2">
+        <div
+          class="rounded-[var(--radius-lg)] border border-[var(--color-neutral-700)] bg-[var(--color-neutral-800)] p-6 md:p-8"
+        >
+          <div class="mb-5 flex items-start gap-3">
+            <Icon
+              name="lucide:map-pin"
+              width={22}
+              height={22}
+              class="mt-1 shrink-0 text-[var(--color-brand)]"
+              aria-hidden="true"
+            />
+            <div>
+              <p class="text-overline mb-2 text-[var(--color-neutral-400)]">Endereço</p>
+              <p class="font-medium text-[var(--color-neutral-0)]">
+                {business.address.street}
+              </p>
+              <p class="text-sm text-[var(--color-neutral-300)]">
+                {business.address.neighborhood} · {business.address.city} - {business.address.state}
+              </p>
+              <p class="text-sm text-[var(--color-neutral-400)]">CEP {business.address.postalCode}</p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-3 border-t border-[var(--color-neutral-700)] pt-5">
+            <Icon
+              name="lucide:clock"
+              width={22}
+              height={22}
+              class="mt-1 shrink-0 text-[var(--color-brand)]"
+              aria-hidden="true"
+            />
+            <div class="flex-1">
+              <p class="text-overline mb-2 text-[var(--color-neutral-400)]">Horário</p>
+              <ul class="space-y-1 text-sm">
+                <li class="flex justify-between gap-4">
+                  <span class="text-[var(--color-neutral-100)]">Seg — Sex</span>
+                  <span class="text-[var(--color-neutral-300)]">08:00 — 17:00</span>
+                </li>
+                <li class="flex justify-between gap-4">
+                  <span class="text-[var(--color-neutral-100)]">Sábado</span>
+                  <span class="text-[var(--color-neutral-300)]">08:00 — 16:00</span>
+                </li>
+                <li class="flex justify-between gap-4">
+                  <span class="text-[var(--color-neutral-100)]">Domingo</span>
+                  <span class="text-[var(--color-neutral-400)]">Fechado</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex flex-col gap-3 sm:flex-row lg:flex-col">
+          <Button
+            href={business.maps.url}
+            variant="primary"
+            size="md"
+            icon="lucide:map-pin"
+            iconRight="lucide:external-link"
+            external
+            dataOrigin="location_directions"
+            class="w-full"
+          >
+            Como chegar
+          </Button>
+          <Button
+            href={getPhoneLink()}
+            variant="ghost"
+            size="md"
+            icon="lucide:phone"
+            dataOrigin="location_phone"
+            class="w-full"
+          >
+            Ligar agora
+          </Button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

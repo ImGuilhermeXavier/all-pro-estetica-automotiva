@@ -1,0 +1,75 @@
+---
+import { Image } from "astro:assets";
+import carro from "@assets/carro.webp";
+import fachada from "@assets/fachada.webp";
+import Button from "@components/ui/Button.astro";
+import { getWhatsAppLink } from "@lib/whatsapp";
+
+const waLink = getWhatsAppLink(
+  "Olá! Vi a galeria de trabalhos no site e queria conversar com vocês.",
+);
+
+/*
+ * Galeria placeholder no MVP.
+ * Substituir por fotos reais de antes/depois quando o cliente fornecer (ver pendências em DECISOES-INICIAIS.md §5).
+ */
+const items = [
+  { src: carro, alt: "Toyota Corolla Cross polido em frente à fachada da ALL PRO" },
+  { src: fachada, alt: "Fachada da ALL PRO Estética Automotiva em Campinas" },
+  { src: carro, alt: "Detalhe de pintura cristalizada com brilho espelhado" },
+  { src: fachada, alt: "Box de trabalho da ALL PRO" },
+  { src: carro, alt: "Acabamento premium após serviço de detalhamento" },
+  { src: fachada, alt: "Estabelecimento da ALL PRO em Chácara Santa Margarida" },
+];
+---
+
+<section
+  id="galeria"
+  class="scroll-mt-20 bg-[var(--color-neutral-900)] py-20 md:py-24"
+>
+  <div class="container-base">
+    <div class="reveal mx-auto max-w-2xl text-center">
+      <p class="text-overline mb-4 text-[var(--color-brand)]">Galeria</p>
+      <h2 class="text-h2 mb-5 text-[var(--color-neutral-0)]">Resultados que falam por si</h2>
+      <p class="text-lg leading-relaxed text-[var(--color-neutral-200)]">
+        Veja alguns dos trabalhos entregues pela ALL PRO.
+      </p>
+    </div>
+
+    <div class="reveal mt-14 grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-6 lg:grid-cols-3">
+      {
+        items.map((item) => (
+          <figure class="group relative overflow-hidden rounded-[var(--radius-lg)] border border-[var(--color-neutral-700)]">
+            <Image
+              src={item.src}
+              alt={item.alt}
+              class="aspect-[4/3] w-full object-cover transition-transform duration-500 ease-[var(--ease-out-soft)] group-hover:scale-[1.03]"
+              widths={[400, 600, 800]}
+              sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+              loading="lazy"
+              decoding="async"
+              quality={80}
+            />
+            <div
+              class="pointer-events-none absolute inset-0 bg-gradient-to-t from-[var(--color-neutral-950)]/40 via-transparent to-transparent"
+              aria-hidden="true"
+            />
+          </figure>
+        ))
+      }
+    </div>
+
+    <div class="reveal mt-12 flex justify-center">
+      <Button
+        href={waLink}
+        variant="ghost"
+        size="md"
+        iconRight="lucide:arrow-right"
+        external
+        dataOrigin="gallery_cta"
+      >
+        Falar com a equipe
+      </Button>
+    </div>
+  </div>
+</section>
