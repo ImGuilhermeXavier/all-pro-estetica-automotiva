@@ -5,7 +5,7 @@ import partytown from "@astrojs/partytown";
 import icon from "astro-icon";
 import tailwindcss from "@tailwindcss/vite";
 
-const SITE = process.env.PUBLIC_SITE_URL ?? "https://allproesteticaautomotiva.com.br";
+const SITE = process.env.PUBLIC_SITE_URL ?? "https://all-pro-estetica-automotiva.pages.dev";
 
 export default defineConfig({
   site: SITE,
